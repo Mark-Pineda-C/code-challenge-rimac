@@ -1,10 +1,10 @@
 import { Logo } from "~/components/logo";
 import type { Route } from "./+types/home";
-import { PhoneIcon } from "~/components/icons";
 import familyImage from "~/assets/family.png";
 import { useForm } from "@tanstack/react-form";
 import { useUser } from "~/context";
 import { useNavigate } from "react-router";
+import { Header } from "~/components/header";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -25,8 +25,10 @@ export default function Home() {
       comercyCheck: false,
     },
     onSubmit: async ({ value }) => {
-      const response = await fetch("https://rimac-front-end-challenge.netlify.app/api/user.json");
-      if(!response.ok) {
+      const response = await fetch(
+        "https://rimac-front-end-challenge.netlify.app/api/user.json"
+      );
+      if (!response.ok) {
         throw new Error("Error al obtener los datos del usuario");
       }
       const data = await response.json();
@@ -35,8 +37,11 @@ export default function Home() {
         documentNumber: value.documentNumber,
         phone: value.phone,
         name: `${data.name} ${data.lastname}`,
-        age: Math.floor((new Date().getTime() - new Date(data.age).getTime()) / (365.25 * 24 * 60 * 60 * 1000))
-      }
+        age: Math.floor(
+          (new Date().getTime() - new Date(data.age).getTime()) /
+            (365.25 * 24 * 60 * 60 * 1000)
+        ),
+      };
       setPersonalData(payload);
       navigate("/step-one");
     },
@@ -47,14 +52,7 @@ export default function Home() {
       <div className="absolute z-0 -top-16 -right-16 size-32 bg-[#00ff83] -rotate-45 blur-3xl md:h-1/2 md:-rotate-5 md:top-32 md:-right-32 md:blur-[128px]"></div>
       <div className="absolute z-0 bottom-16 -left-16 size-32 bg-[#8e2cb7] -rotate-45 blur-3xl md:h-1/2 md:-rotate-5 md:bottom-32 md:-left-32 md:blur-[128px]"></div>
       <div className="relative container mx-auto max-w-6xl px-4 flex-1 z-10">
-        <header className="flex items-center justify-between py-4">
-          <Logo />
-          <div className="flex items-center gap-2">
-            <p className="text-sm hidden md:block">¡Compra por este medio!</p>
-            <PhoneIcon />
-            <span className="font-semibold">(01) 411 6001</span>
-          </div>
-        </header>
+        <Header />
         <main className="py-4 grid grid-cols-1 md:grid-cols-2 md:gap-20">
           <div className="col-span-1 hidden md:block">
             <img
@@ -203,14 +201,17 @@ export default function Home() {
                   </>
                 )}
               </form.Field>
-              <form.Field name="privacyCheck" validators={{
-                onSubmit: ({ value }) => {
-                  if (!value) {
-                    return "Es necesario aceptar la Política de Privacidad";
-                  }
-                  return undefined;
-                },
-              }}>
+              <form.Field
+                name="privacyCheck"
+                validators={{
+                  onSubmit: ({ value }) => {
+                    if (!value) {
+                      return "Es necesario aceptar la Política de Privacidad";
+                    }
+                    return undefined;
+                  },
+                }}
+              >
                 {({ state, handleChange, name }) => (
                   <div className="flex items-start gap-2">
                     <input
@@ -234,14 +235,17 @@ export default function Home() {
                   </div>
                 )}
               </form.Field>
-              <form.Field name="comercyCheck" validators={{
-                onSubmit: ({ value }) => {
-                  if (!value) {
-                    return "Es necesario aceptar la Política de Comunicaciones Comerciales";
-                  }
-                  return undefined;
-                },
-              }}>
+              <form.Field
+                name="comercyCheck"
+                validators={{
+                  onSubmit: ({ value }) => {
+                    if (!value) {
+                      return "Es necesario aceptar la Política de Comunicaciones Comerciales";
+                    }
+                    return undefined;
+                  },
+                }}
+              >
                 {({ state, handleChange, name }) => (
                   <div className="flex items-start gap-2">
                     <input
