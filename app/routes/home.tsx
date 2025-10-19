@@ -116,6 +116,9 @@ export default function Home() {
                           if (!value) {
                             return `El ${type} es requerido`;
                           }
+                          if (!/^\d+$/.test(value)) {
+                            return "El número de documento debe contener solo dígitos";
+                          }
                           if (type === "DNI" && value.length < 8) {
                             return "El DNI debe tener 8 dígitos";
                           }
@@ -171,6 +174,9 @@ export default function Home() {
                     if (value.length !== 9) {
                       return "El número de celular debe tener 9 dígitos";
                     }
+                    if (!/^\d+$/.test(value)) {
+                      return "El número de celular debe contener solo dígitos";
+                    }
                     return undefined;
                   },
                 }}
@@ -179,7 +185,6 @@ export default function Home() {
                   <>
                     <div className="relative">
                       <input
-                        type="text"
                         id={name}
                         value={state.value}
                         onChange={(e) => handleChange(e.target.value)}

@@ -172,7 +172,7 @@ export default function StepOne() {
                   selectedPlanCost: plan.price,
                 });
                 navigate("/step-two");
-              }} className="w-full bg-[#F7052D] text-white py-2 rounded-full justify-self-end cursor-pointer">
+              }} className="w-full bg-[#F7052D] text-white py-2 rounded-full justify-self-end cursor-pointer hover:bg-[#F7052D]/80 transition-colors duration-200">
                 Seleccionar plan
               </button>
             </div>
