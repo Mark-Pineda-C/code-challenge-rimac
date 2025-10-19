@@ -5,6 +5,7 @@ interface UserData {
   documentNumber: string;
   phone: string;
   name: string;
+  lastname: string;
   age: number;
   selectedPlanName: string;
   selectedPlanCost: number;
@@ -17,6 +18,7 @@ interface UserContextType {
     documentNumber: string;
     phone: string;
     name: string;
+    lastname: string;
     age: number;
   }) => void;
   setPlanData: (data: {
@@ -32,6 +34,7 @@ const initialUserData: UserData = {
   documentNumber: '',
   phone: '',
   name: '',
+  lastname: '',
   age: 0,
   selectedPlanName: '',
   selectedPlanCost: 0,
@@ -49,6 +52,7 @@ export function UserProvider({ children }: UserProviderProps) {
     documentNumber: string;
     phone: string;
     name: string;
+    lastname: string;
     age: number;
   }) => {
     setUserData(prev => ({

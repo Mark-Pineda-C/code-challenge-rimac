@@ -36,9 +36,10 @@ export default function Home() {
         documentType: value.documentType,
         documentNumber: value.documentNumber,
         phone: value.phone,
-        name: `${data.name} ${data.lastname}`,
+        name: data.name,
+        lastname: data.lastName,
         age: Math.floor(
-          (new Date().getTime() - new Date(data.age).getTime()) /
+          (new Date().getTime() - new Date(data.birthDay).getTime()) /
             (365.25 * 24 * 60 * 60 * 1000)
         ),
       };
