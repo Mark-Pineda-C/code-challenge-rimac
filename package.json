@@ -1,5 +1,6 @@
 {
   "name": "code-challenge-rimac",
+  "homepage": "https://code-challenge-rimac.vercel.app/",
   "private": true,
   "type": "module",
   "scripts": {
