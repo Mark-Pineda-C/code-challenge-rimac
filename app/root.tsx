@@ -10,7 +10,6 @@ import {
 import type { Route } from "./+types/root";
 import { UserProvider } from "./context";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import "./app.css";
 
 const queryClient = new QueryClient();
@@ -40,7 +39,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <QueryClientProvider client={queryClient}>
           <UserProvider>{children}</UserProvider>
-          <ReactQueryDevtools />
         </QueryClientProvider>
         <ScrollRestoration />
         <Scripts />
